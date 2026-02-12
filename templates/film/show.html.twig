@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ film.title }}{% endblock %}
+
+{% block body %}
+<h1>{{ film.title }}</h1>
+
+<p><strong>Année :</strong> {{ film.releaseYear }}</p>
+
+{% if film.synopsis %}
+    <p>{{ film.synopsis }}</p>
+{% endif %}
+
+<h3>Disponible sur :</h3>
+
+<ul>
+    {% for platforme in film.platformes %}
+        <li class="platform-name">
+            <img src="{{ platforme.logo }}" width="40">
+            <a href="{{ platforme.url }}" target="_blank">
+                {{ platforme.name }}
+            </a>
+        </li>
+    {% else %}
+        <li>Aucune plateforme disponible.</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ path('app_film_index') }}">← Retour</a>
+
+{% endblock %}
