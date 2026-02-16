@@ -9,7 +9,7 @@
     {% for film in films %}
         <div class="col-md-4 mb-3">
             <div class="card p-3">
-                <h4>{{ film.title }}</h4>
+                <h4>Titre : {{ film.title }}</h4>
                 <p>Année : {{ film.releaseYear }}</p>
                 <a href="{{ path('app_film_show', {id: film.id}) }}" class="btn btn-primary">
                     Voir détail

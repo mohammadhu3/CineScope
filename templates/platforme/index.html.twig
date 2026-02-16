@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PlatformeController!{% endblock %}
+
+{% block body %}
+
+
+<h1>Liste des platformes</h1>
+
+<div class="row">
+    {% for platforme in platformes %}
+        <div class="col-md-4 mb-3">
+            <div class="card p-3">
+                <h4>  {{ platforme.name }}</h4>
+                <img src="{{ platforme.logo }}" alt="">
+                <a href="{{ path('app_platforme_show', {id: platforme.id}) }}" class="btn btn-primary">
+                    Voir films 
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun platforme trouvé.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
