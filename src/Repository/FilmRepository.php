@@ -36,7 +36,7 @@ class FilmRepository extends ServiceEntityRepository
 */
         /*
            return $this->createQueryBuilder('f')
-               ->andWhere('f.platforme_id = :val')
+               ->andWhere('f.platforme = :val')
                ->setParameter('val', $platforme)
                ->orderBy('f.id', 'ASC')
                ->setMaxResults(10)

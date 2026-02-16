@@ -1,31 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ film.title }}{% endblock %}
+{% block title %}Liste films{% endblock %}
 
 {% block body %}
-<h1>{{ film.title }}</h1>
+<h1>Liste des films par {{ platforme.name }}e</h1>
 
-<p><strong>Année :</strong> {{ film.releaseYear }}</p>
 
-{% if film.synopsis %}
-    <p>{{ film.synopsis }}</p>
-{% endif %}
 
 <h3>Disponible sur :</h3>
 
 <ul>
-    {% for platforme in film.platforme %}
+    {% for film in films %}
         <li class="platform-name">
-            <img src="{{ platforme.logo }}" width="40">
-            <a href="{{ platforme.url }}" target="_blank">
-                {{ platforme.name }}
-            </a>
+            <p> {{ film.title }}</p>
+            <p>{{ film.synopsis }}</p>
         </li>
     {% else %}
         <li>Aucune plateforme disponible.</li>
     {% endfor %}
 </ul>
 
-<a href="{{ path('app_platforme_show') }}">← Retour</a>
+<a href="{{ path('app_platforme_index') }}">← Retour</a>
 
 {% endblock %}
