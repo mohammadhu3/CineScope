@@ -22,7 +22,7 @@ class FilmRepository extends ServiceEntityRepository
        public function findByPlatforme( PlatformeRepository $platforme): array
        {
            return $this->createQueryBuilder('f')
-               ->andWhere('f.platforme_id = :val')
+               ->andWhere('f.platforme = :val')
                ->setParameter('val', $platforme)
                ->orderBy('f.id', 'ASC')
                ->setMaxResults(10)

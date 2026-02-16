@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\FilmRepository;
+use App\Entity\Platforme;
 use App\Repository\PlatformeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,20 +13,17 @@ final class PlatformeController extends AbstractController
     #[Route('/platformes', name: 'app_platforme_index')]
     public function index(PlatformeRepository $platformeRepository): Response
     {
-        $platformes = $platformeRepository->findAll();
-
         return $this->render('platforme/index.html.twig', [
-            'platformes' => $platformes,
+            'platformes' => $platformeRepository->findAll(),
         ]);
     }
 
     #[Route('/platformes/{id}', name: 'app_platforme_show')]
-    public function show(FilmRepository $filmsRepository, PlatformeRepository $platforme): Response
+    public function show(Platforme $platforme): Response
     {
-        $films = $filmsRepository->findByPlatforme($platforme);
-
         return $this->render('platforme/show.html.twig', [
-            'films' => $films,
+            'platforme' => $platforme,
+            'films' => $platforme->getFilms(),
         ]);
     }
 }
